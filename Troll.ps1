@@ -683,7 +683,7 @@ $s.Speak($OUTRO)
 
 # this snippet will leave a message on your targets desktop 
 
-$message = "GM Chamber Live Hack"
+$message = "GM Chamber Live Hack Demo" + "\n\n Stay Protected" + "\n\n Stay Compliant" + "\n\n Stay Safe"
 
 Add-Content $home\Desktop\WithLove.txt $message
 ###########################################################################################################
