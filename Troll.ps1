@@ -509,7 +509,7 @@ Write-Host "All updates done. Finishing installation ..."
 }
 $pls = Get-Days_Set
 # Write-Host statement used to track progress while debugging
-Write-Host " Updating: 30s left....."
+Write-Host "Updating: 30s left....."
 
 ###########################################################################################################
 
