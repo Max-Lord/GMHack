@@ -360,7 +360,7 @@ public class Params
 
 #############################################################################################################################################
 
-Function WallPaper-Troll {
+Function WallPaper_Troll {
 
 if (!$Networks) { Write-Host "Trying ..." 
 }else { 
@@ -650,7 +650,7 @@ $s.Speak($PUB_IPwarn)
 
 $s.Speak($PASSwarn)
 
-WallPaper-Troll
+WallPaper_Troll
 
 $s.Speak($LAST_PASSwarn)
 
