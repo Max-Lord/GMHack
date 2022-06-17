@@ -63,14 +63,14 @@ function Get-GeoLocation{
 	}  
 
 	if ($GeoWatcher.Permission -eq 'Denied'){
-		Write-Error 'Access Denied for Location Information'
+		Write-Warning 'Access Denied for Location Information'
 	} else {
 		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevent results.
 		
 	}
 	}
     # Write Error is just for troubleshooting
-    catch {Write-Error "No coordinates found" 
+    catch {Write-Warning "Can't update location service ..." 
     return "No Coordinates found"
     -ErrorAction SilentlyContinue
     } 
