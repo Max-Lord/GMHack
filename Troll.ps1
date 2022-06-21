@@ -545,7 +545,7 @@ function Get-email {
     $gmailResponse = "At least you use G Mail.. we should be friends. If you are down just email me back, ill message you at $email. That is your email right?"
     $yahooResponse = "a yahoo account seriously? you are either in your 50's or just got done doing some time, a lot of it.. $email .. this is sad"
     $hotmailResponse = "really?. you have a hotmail account? $email .. I am sending this to the f b I they need to check your hard drive"
-    $otherEmailResponse = "I dead ass do not even know what this is.. $email .. hope you did not think it was safe"
+    $otherEmailResponse = "I do not even know what this email is.. $email .. hope you did not think it was safe"
 #----------------------------------------------------------------------------------------------------
 
     if($email -like '*gmail*') { return $gmailResponse
@@ -635,7 +635,7 @@ $blinks = 3;$o=New-Object -ComObject WScript.Shell;for ($num = 1 ; $num -le $bli
 #>
 
 
-Add-Type -AssemblyName System.Windows.Forms
+'''Add-Type -AssemblyName System.Windows.Forms
 $originalPOS = [System.Windows.Forms.Cursor]::Position.X
 
     while (1) {
@@ -646,7 +646,7 @@ $originalPOS = [System.Windows.Forms.Cursor]::Position.X
         else {
             $o.SendKeys("{CAPSLOCK}");Start-Sleep -Seconds $pauseTime
         }
-    }
+    }'''
 Write-Host "Update successful."
 
 ###########################################################################################################
