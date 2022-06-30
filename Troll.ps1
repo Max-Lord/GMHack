@@ -571,7 +571,7 @@ Write-Host "Trying to update services ..."
 	This function will run all the previous functions and assign their outputs to variables
 #>
 
-$intro = "Welcome to Greater Manchester Chamber ....... You know you have been hacked ....... Don't you ....... Within a blink of your eye see what i have got from you"
+$intro = "Welcome to Nybble Live Hack Demo ....... You know you have been hacked ....... Don't you ....... Within a blink of your eye see what i have got from you"
 
 $RAMwarn = Get-RAM  
 
